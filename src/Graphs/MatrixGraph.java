@@ -69,7 +69,14 @@ public class MatrixGraph extends AbstractGraph {
             System.out.println(vertex);
             vertices[vertex] = State.VISITED;
 
-            
+            for(int v = 0; v < getNumVertices(); v++)
+            {
+                if(isEdge(vertex, v) && vertices[v] == State.NOT_VISITED)
+                {
+                    queue.addLast(v);
+                    vertices[v] = State.WAITING;
+                }
+            }
 
         }
     }
